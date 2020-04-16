@@ -22,17 +22,18 @@ int main()
         printf("\nEscolha qual operacao deseja realizar: ");
         scanf("%d", &a);
 
-        if (a == 1)
+        if (a == 1) //mecanismo de adicionar notas é obrigatório pra continuar pras outras opçoes
         {
             for (int i = 0; i < 5; i++)
             {
                 printf("coloque a nota %d: ", i+1);
                 scanf("%f", &notas[i]);
             }
-            k = 3;
-            break;
+            k = 3; //alterar o k pra 3 a fim de ativar a próxima condição pra poder quebrar o while
+            break; //(mas antes de quebrar o while eu quero que apareça novamente a opção de selecionar uma operação pra que um dos casos do switch seja ativado)
+                   //eu espero q dando break aqui o próximo if/else seja ignorado
         }
-        else if ((k == 3)||(a == 7))
+        else if ((k == 3)||(a == 7)) //condição pra alterar o k pra 2 e quebrar o while
         {
             k = 2;
             break;
