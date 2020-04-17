@@ -30,7 +30,7 @@ int main()
                 scanf("%f", &notas[i]);
             }
             k = 3; //alterar o k pra 3 a fim de ativar a próxima condição pra poder quebrar o while
-            break; //(mas antes de quebrar o while eu quero que apareça novamente a opção de selecionar uma operação pra que um dos casos do switch seja ativado)
+            continue; //(mas antes de quebrar o while eu quero que apareça novamente a opção de selecionar uma operação pra que um dos casos do switch seja ativado)
                    //eu espero q dando break aqui o próximo if/else seja ignorado
         }
         else if ((k == 3)||(a == 7)) //condição pra alterar o k pra 2 e quebrar o while
