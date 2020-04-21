@@ -18,11 +18,11 @@ int main()
         printf("(3) Media ponderada\n"); //colocar os pesos está no caso 2
         printf("(4) Desvio padrao\n");
         printf("(5) Maior e menor notas\n");
-        printf("(6) Para fechar o programa\n");
+        printf("(0) Para fechar o programa\n");
         printf("\nEscolha qual operacao deseja realizar: ");
         scanf("%d", &a);
 
-        if (a == 1) //mecanismo de adicionar notas é obrigatório pra continuar pras outras opçoes
+        if (a != 6) //mecanismo de adicionar notas é obrigatório pra continuar pras outras opçoes
         {
             for (int i = 0; i < 5; i++)
             {
@@ -68,11 +68,9 @@ int main()
         printf("A maior nota e' %0.2f e a menor e' %0.2f", maior, menor);
         continue;
 
-    case 6:
-        break;
 
     }
-    } while ((a < 1)||(a > 6));
+    } while ((a != 0));
 
     return 0;
 }
