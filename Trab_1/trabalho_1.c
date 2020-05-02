@@ -22,7 +22,7 @@ int main()
         printf("\nEscolha qual operacao deseja realizar: ");
         scanf("%d", &a);
 
-        if (a != 6) //mecanismo de adicionar notas é obrigatório pra continuar pras outras opçoes
+        if (a != 0) //mecanismo de adicionar notas é obrigatório pra continuar pras outras opçoes
         {
             for (int i = 0; i < 5; i++)
             {

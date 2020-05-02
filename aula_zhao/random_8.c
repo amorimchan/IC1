@@ -21,11 +21,3 @@ int main(){
 
     return 0;
 }
-
-
-    /*
-    for (int i = 0; i <=(2n-1); i++)
-    {
-        v1 *= i;
-    }
-    */
