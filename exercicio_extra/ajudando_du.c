@@ -52,7 +52,7 @@ int main(){
         {
             for (int j = 0; j < count; j++)
             {
-                interm[i] = strcat(interm[i], )
+                interm[i] = strcat(interm[i], );
             }
             
         }
