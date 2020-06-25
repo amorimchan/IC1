@@ -2,57 +2,39 @@
 #include <string.h>
 #include <stdlib.h>
 
-int posipl(char *s, char *sub) //*s é a string e sub a substring
+int posipl(char *string, char *to_find) //*string é a string e to_find a substring
 {
-    char c = sub[0];
-    int j, i, bool, z, k = 1; bool = z = 0;
+    char c = to_find[0];
+    int z = 0;
 
-    int *posiletra; posiletra = (int *) malloc(strlen(s)+1); posiletra[0] = 0; //alocando memoria pro vetor posiletra q armazena a posicão dos caracteres
-    char *comparador; comparador = (char *) malloc(strlen(sub));
+    int n = strlen(to_find);
 
-    // algoritmo de marcar as posicões das letras na frase
-    while (*s != '\0')
-    {
-        if (*s != c)
-            z++;
-        else if (*s == c)
-        {
-            posiletra[k] = z;
-            k++;
-            z++;
-        }
-        s++;
-    }
-
-    k = 0;
     
-    do
+    while (*string != '\0')
     {
-        for (j = posiletra[k]; j <= strlen(sub); j++, i++) //como é substring e n frase eu vou transferir tudo entre os espacos
-        {                                                      //aqui eu to transferindo substrings para outro vetor comparador  
-            comparador[i] = s[j];
-        }
-        if (strcmp(comparador, sub) == 0)
-        {
-            bool = 1;
-            return posiletra[k];
+        if (*string == c && memcmp(string, to_find, n) == 0)
+        {   
+            return z;
         }
         else
         {
-            k++;
+            z++;
+            string++;
         }
-    } while (bool != 1);
-
-    free(posiletra); free(comparador);
+    }
 }
+
+
 
 int main()
 {
     char string[] = {"atirei o pau no ga to to, mas o ga to to."}; //vou receber isso na funcão
-    char substring[] = {"o pau no"};                               //tbm vou receber isso na funcão
+    char to_findstring[] = {"o pau no"};                               //tbm vou receber isso na funcão
     int resultado = 0;
 
-    resultado = posipl(string, substring);
+    resultado = posipl(string, to_findstring);
+
+    printf("a posicao é %d\n", resultado);
 
 
 
@@ -65,25 +47,25 @@ int main()
     char comparador[100];
 
     // algoritmo de marcar as posicões das letras na frase
-    char c = substring[0];
-    char *s = &string[0];
+    char c = to_findstring[0];
+    char *string = &string[0];
     int posiletra[strlen(string)]; //vetor q armazena a posicão das letras
     posiletra[0] = 0;
     int bool = 0; //comparador booleano para o do while
     int z = 0;
     int k = 1; //var de posicões no vetor posiletra
 
-    while (*s != '\0')
+    while (*string != '\0')
     {
-        if (*s != c)
+        if (*string != c)
             z++;
-        else if (*s == c)
+        else if (*string == c)
         {
             posiletra[k] = z;
             k++;
             z++;
         }
-        *s++;
+        *string++;
     }
 
     k = 0;
@@ -91,14 +73,14 @@ int main()
     do
     {
         int i = 0;
-        for (int j = posiletra[k]; j <= posiletra[k + 1]; j++, i++) //como é substring e n frase eu vou transferir tudo entre os espacos
+        for (int j = posiletra[k]; j <= posiletra[k + 1]; j++, i++) //como é to_findstring e n frase eu vou transferir tudo entre os espacos
         {   
-                                                              //aqui eu to transferindo substrings para outro vetor comparador
+                                                              //aqui eu to transferindo to_findstrings para outro vetor comparador
             comparador[i] = string[j];
             printf("%c\n", comparador[i]);
         }
 
-        if (strcmp(comparador, substring) == 0)
+        if (strcmp(comparador, to_findstring) == 0)
         {
             //return posiletra[k];
             printf("%d\n", posiletra[k]);
