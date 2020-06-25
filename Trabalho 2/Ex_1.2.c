@@ -5,7 +5,8 @@
 int posipl(char *s, char *sub) //*s é a string e sub a substring
 {
     char c = sub[0];
-    int j, i, bool, z, k = 1, b = 2; bool = z = 0;
+    int j, i, bool, z, k = 1; bool = z = 0;
+
     int *posiletra; posiletra = (int *) malloc(strlen(s)+1); posiletra[0] = 0; //alocando memoria pro vetor posiletra q armazena a posicão dos caracteres
     char *comparador; comparador = (char *) malloc(strlen(sub));
 
@@ -27,14 +28,14 @@ int posipl(char *s, char *sub) //*s é a string e sub a substring
     
     do
     {
-        for (j = posiletra[k]; j <= strlen(sub); j++, i++, b++) //como é substring e n frase eu vou transferir tudo entre os espacos
+        for (j = posiletra[k]; j <= strlen(sub); j++, i++) //como é substring e n frase eu vou transferir tudo entre os espacos
         {                                                      //aqui eu to transferindo substrings para outro vetor comparador  
             comparador[i] = s[j];
         }
         if (strcmp(comparador, sub) == 0)
         {
-            return posiletra[k];
             bool = 1;
+            return posiletra[k];
         }
         else
         {
@@ -49,7 +50,7 @@ int main()
 {
     char string[] = {"atirei o pau no ga to to, mas o ga to to."}; //vou receber isso na funcão
     char substring[] = {"o pau no"};                               //tbm vou receber isso na funcão
-    int resultado;
+    int resultado = 0;
 
     resultado = posipl(string, substring);
 
