@@ -11,10 +11,10 @@
 
 int main ()
 {
-    int n, m, i, j, l, k = 0, contador = 0, bool = 0;
-    int vet1[n];
+    int n, m, i, j, l, k = 0, contador = 0, bool = 0; //i, j, l sao pra lacos for -- k é para contar o tamanho/indice do vetor intersec --
+    int vet1[n]; 
     int vet2[m];
-    int *intersec;; //tamanho m pq se m for maior vai sobrar memoria, se for o menor vai ter memoria o suficiente pra armazenar tudo
+    int *intersec;
 
     printf("De um valor inteiro a n: ");
     scanf("%d", &n);
@@ -22,10 +22,10 @@ int main ()
     printf("\nDe um valor inteiro a m: ");
     scanf("%d", &m);
 
-    intersec = (int *) malloc(sizeof(int));
+    intersec = (int *) malloc(sizeof(int)); //aloca memoria para o vetor intersec
 
-    if (n >= m)
-      intersec = (int *) realloc(intersec, m*sizeof(int));
+    if (n >= m) //realoca dependendo da situacao (pra ocupar menos espaco ainda que a diferenca nao seja tanta)
+      intersec = (int *) realloc(intersec, m*sizeof(int)); 
     else
       intersec = (int *) realloc(intersec, n*sizeof(int));
 
@@ -51,7 +51,7 @@ int main ()
         {
             if (vet1[i] == vet2[j]) //caso o conteudo dos dois seja igual
             {
-                for (l = 0; l < (sizeof intersec)/4; l++) //o programa primeiro tenta achar se o valor de vet1[i] ja tava no vetor intesec
+                for (l = 0; l < k; l++) //o programa primeiro tenta achar se o valor de vet1[i] ja tava no vetor intesec
                 {
                     if (vet1[i] == intersec[l])
                     {

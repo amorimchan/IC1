@@ -40,58 +40,54 @@ int posipl(char *string, char *to_find)
     
 }
 
+//funcao do trabalho PRECISA DAS BIBLIOTECAS "stdio.h" e "string.h" 
 int posipl2(char *string, char *to_find) //*string é a string e to_find a substring
 {
 
-    char c = to_find[0];
-    int z = 0, i, bool = 1;
-    char *str1, *str2;
+    char c = to_find[0]; //a variavel c vai receber a primeira letra da substring p poder procurar por ela mais tarde
+    int z = 0, i, bool = 1; //z é responsavel por armazenar o indice que vai ser devolvido, enquanto bool é uma variavel de identificacao (0 ou 1)
+    char *str1, *str2; //ponteiros que irão apontar para a string e substring na hora de procurar pela palavra
 
-    int n = strlen(to_find);
+    int n = strlen(to_find); //tamanho da palavra armazenada na substring
 
-    
+    //nesse loop while o programa segue todos os elementos do vetor até chegar no 'nulo' \0
     while (*string != '\0')
     {
-        if (*string == c)
-        {   
-            str1 = string;
+        if (*string == c) //aqui ele compara se o caracter apontado por *string é igual ao primeiro caracter da substring
+        {                 //e se for verdade, vai ocorrer uma verificacao da palavra que o sucede com a substring
+            str1 = string; 
             str2 = to_find;
 
-            while (n--)
+            while (n--) //loop de verificacão que vai rodar n vezes (sendo n o tamanho da substring)
             {
-                if(*str1 != *str2) 
+                if(*str1 != *str2) //se o conteudo apontado pelas duas for diferente, o programa muda o status de bool pra 0 e sai do while 
                 {
                     bool = 0;
-                    printf("nao existo");
                     break;
                 }
-                else if(*str1 == *str2)
+                else if(*str1 == *str2) //já se o conteudo for igual, str1++ e str2++ mantendo o status bool == 1
                 {
                     str1++; 
                     str2++;
-                    printf("adicionando\n");
                 }
             }
-            if (bool == 1)
+            if (bool == 1) //se bool == 1 (ou seja, o loop rodou n vezes onde o valor apontado por str1 e str2 eram iguais) a funcao retorna z 
             {
                 return z;
             }
-            else if (bool == 0)
-            {
+            else if (bool == 0) //se bool == 0 (ou seja, houve diferencas entre os valores apontados por str1 e str2 em algum momento), o programa continua verificando
                 continue;
-            }
-            n = strlen(to_find);
-            z++;
+            n = strlen(to_find);//preparando n para a proxima verificacão
+            z++; //somando 1 para o numero de posicoes andadas antes de partir para a proxima posicao do vetor para o qual *string aponta
             string++;
         }
-        else
+        else //se o caracter apontado por *string não for igual ao primeiro da substring: 
         {
-            z++;
-            string++;
+            z++; //conta +1 pro numero de espacos andados 
+            string++; //altera o ponteiro para o indice seguinte do vetor
         }
     }
 }
-
 
 
 int main()

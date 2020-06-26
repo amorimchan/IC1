@@ -1,81 +1,65 @@
-#include<stdio.h>
-#include<string.h>
-
-//Escreva um programa que contenha uma funcão que retorne a primeira posicão de uma substring dentro de uma string. 
-//Caso a substring não seja encontrada, a funcão deve retornar zero.
-
-int main(){
-
-    char string[] = {"atirei o pau no ga to to, mas o ga to to."};
-    char substring[100];
-    char comparador[100];
-    int espnum[30]; espnum[0] = 0;
-    int k = 0;
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 
-    for (int i = 0; i < strlen(string); i++) //PEGA OS NUMEROS DOS ESPACOS DENTRO NA STRING
+int posipl(char *string, char *to_find)
+{
+    int tamanho(char *k) //funcao responsavel por contar o tamanho de uma string
     {
-        /*
-        if (string[i] == ';' || string[i] == ',' || string[i] == '.' || string[i] == ':' || string[i] == '"' || string[i] == '/' || string[i] == '-' || string[i] == '_' || string[i] == '!' || string[i] == '?' || string[i] == '(' || string[i] == ')')
+        int contador = 0;
+
+        while (*k != '\0')
         {
-            continue;  
-        }
-        */
-        
-        if (string[i] == ' ')
-        {
-            espnum[k+1] = i;
+            contador++;
             k++;
-            printf("%d\n", espnum[k-1]);
         }
+        return contador;
     }
 
-    k = 0;
-
-    do
+    int compare(char*s1, char *s2, int n) //funcao que vai comparar dois pedacos de string de tamanho n
     {
-        for (int j = espnum[k]; j < espnum[k+1]; j++, k++) //como é substring e n frase eu vou transferir tudo entre os espacos 
-    {                                                  //aqui eu to transferindo substrings para outro vetor comparador
-        comparador[k] = string[j];
-    }
-
-    if (strcmp(comparador, substring) == 0)
-    {
-        
-    }
-    } while (/* condition */);
-    
-
-
-
-
-
-
-    for (int j = posiesp1; j < posiesp2; j++, k++) //como é substring e n frase eu vou transferir tudo entre os espacos 
-    {                                              //aqui eu to transferindo substrings para outro vetor comparador
-        comparador[k] = string[j];
-    }
-
-    if (strcmp(comparador, substring) == 0)
-    {
-        
-    }
-    
-    
-
-
-
-
-
-    if (strcmp(comparador, str1) == 0) //compara essa palavra com a eleita a ser removida, e se for congruente será substituida
-    {
-        for (int j = i; j < strlen(frase); j++)
+        while(n--)
         {
-            interm[j-i] = frase[j];
+            if( *s1 != *s2 )
+                return 1;
+            else
+                s1++;
+                s2++;
         }
-        strcat(str2, interm);
+        return 0;
     }
-    
+
+    //INICIO DO ALGORITMO PRA PROCURAR DE VERDADE
+
+    char c = to_find[0]; //c recebe o primeiro caraceter da substring
+    int z; //é o responsavel por contar a posicao no vetor
+    int n = tamanho(to_find); //tamanho da substring
+
+    while (*string != '\0') //enqunato o conteudo apontado pelo vetor string for diferente de \0
+    {
+        if (*string == c && compare(string, to_find, n) == 0) //se o conteudo apontado for igual ao conteudo de c e a comparacao entre o que os sucede com tamanho n for igual, retorna o z
+        {
+            return z;
+        }
+        else //se nao aumente um no z e pule o ponteiro para o proximo endereco do vetor
+        {
+            z++;
+            string++;
+        }
+        
+    }
+    return 0;
+}
+
+
+
+int main()
+{
+    char string[] = {"No meio do caminho tinha uma pedra."}; 
+    char to_findstring[] = {"inho"};
+
+    printf("%d\n", posipl(string, to_findstring));
 
     return 0;
 }
