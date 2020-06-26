@@ -1,33 +1,31 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
 int main()
 {
+    int *intersec;
 
-    char string[] = {"atirei o pau no ga to to, mas o ga to to."}; //vou receber isso na funcão
-    char substring[100]; //tbm vou receber isso na funcão
-    char comparador[100];
+    int i, k = 10;
 
-    // algoritmo de marcar as posicões das letras na frase
-    char c = substring[0];
-    char *s = &string[0];
-    int posiletra[strlen(string)]; //vetor q armazena a posicão das letras
-    int i = 0;
-    int k = 0; //var de posicões no vetor posiletra
+    intersec = (int *) malloc(k);
 
-
-    if (*s != c)
-        *s++;
-    else if (*s == c)
+    for (i = 0; i < 7; i++)
     {
-        posiletra[k] = s;
-        k++;
+        intersec[i] = i;
     }
-    else if (s == &)
+
+    printf("%d", sizeof intersec);
+
+    
+    printf("\nos valores dentro do vetor são: {");
+
+    for (i = 0; i < sizeof (intersec)+1; i++)
     {
-        /* code */
+        printf("'%d', ", intersec[i]);
     }
-    i++;
+        
+        printf("}");
 
     return 0;
 }

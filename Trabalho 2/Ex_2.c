@@ -1,67 +1,78 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
 //Faca um programa que leia dois numeros 'n' e 'm' e:
 // -Crie e leia um vetor de inteiros de n posicões
 // -Crie e leia um vetor de inteiros de m posicões
-// -Crie e conostrua um vetor de inteiros que seja a intersecão entre os dois vetores anteriores (que contém apenas os números que estão em ambos os vetores)
+// -Crie e construa um vetor de inteiros que seja a intersecão entre os dois vetores anteriores (que contém apenas os números que estão em ambos os vetores)
 //      -Obs: não deve conter números repetidos
 
 
-int posipl(char *s, char *sub)
+int main ()
 {
-    char c = sub[0];
-    printf("%c", s[0]);
-}
+    int *vet1;
+    int *vet2;
+    int intersec;
 
+    int n, m, i, j, k = 2, contador = 0;
 
-int main (){
+    printf("De um valor inteiro a n: ");
+    scanf("%d", &n);
 
- /*
-char *strchr(const char *s, char c)
-{
-    while (*s != c)
-        if (!*s++)
-            return 0;
-    return (char *)s;
-}
+    printf("\nDe um valor inteiro a m: ");
+    scanf("%d", &m);
 
+    vet1 = (int *) malloc(n);
+    vet2 = (int *) malloc(m);
 
-char *charstr(const char *s, char c)
-{
-    int posiletra[strlen(string)];
-    int a = 1; //var identificadora binaria
-    int k = 0; //var de posicões no vetor receptor
-    while (a != 0)
-        if (*s != c)
-            *s++;
-        else if (*s == c)
-        {
-            posiletra[k] = *s;
-            k++;
-        }
-        
-}
-
-
-char posichar(char *s, const char c)
+    if (n>m)
     {
-        for (int i = 0; i < strlen(*s); i++)
-        {
-            if (s[i] == )
-            {
-                
-            }
-            
-        }
-        
+        int intersec[m];
     }
-    */
+    else
+    {
+        int intersec[n];
+    }
+    
+    
 
-   char string[] = {"atirei o pau no ga to to, mas o ga to to."}; //vou receber isso na funcão
-   char substring[] = {"o pau no"};                               //tbm vou receber isso na funcão
+    for ( i = 0; i < n; i++)
+    {
+        printf("\ncoloque um numero inteiro para a posicao %d no vetor 1: ", i);
+        scanf("%d", &vet1[i]);
+    }
 
-    posipl(string, substring);
+    printf("\n**********************************************************\n");
+
+    for ( i = 0; i < m; i++)
+    {
+        printf("\ncoloque um numero inteiro para a posicao %d no vetor 2: ", i);
+        scanf("%d", &vet2[i]);
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < m; j++)
+        {
+            if (vet1[i] == vet2[j])
+            {
+                intersec[contador] = vet1[i];
+                contador++;
+                printf("\n%d", j);
+                break;
+            }
+        }
+    }
+
+    printf("\nos valores dentro do vetor são: {");
+
+    for (i = 0; i < sizeof(intersec); i++)
+    {
+        printf("'%d', ", intersec[i]);
+    }
+    
+    printf("}");
     
     return 0;
 }
