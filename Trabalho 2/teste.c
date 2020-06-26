@@ -4,23 +4,25 @@
 
 int main()
 {
-    int *intersec;
 
-    int i, k = 10;
+    int i, k = 6;
+    int intersec[k];
 
-    intersec = (int *) malloc(k);
+    //intersec = (int *) malloc(k);
 
-    for (i = 0; i < 7; i++)
+    for (i = 0; i < k; i++)
     {
         intersec[i] = i;
     }
 
-    printf("%d", sizeof intersec);
+    int v = (sizeof intersec)/4;
+
+    printf("%d", v);
 
     
     printf("\nos valores dentro do vetor são: {");
 
-    for (i = 0; i < sizeof (intersec)+1; i++)
+    for (i = 0; i < (sizeof intersec)/4; i++)
     {
         printf("'%d', ", intersec[i]);
     }
